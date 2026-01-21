@@ -28,7 +28,7 @@
 #define MAPX 8
 #define MAPY 6
 
-#define MAXCOUNT12 3  //ÃÖ´ë 1,2 Çã¿ë °¹¼ö 
+#define MAXCOUNT12 3  //ìµœëŒ€ 1,2 í—ˆìš© ê°¯ìˆ˜ 
 
 int i,j,i1,j1,i2,j2,i3,j3;
 int imain,jmain;
@@ -43,7 +43,7 @@ char but;
 int have_num[13]={0,0,0,0,0,0,0,0,0,0,0,0,0}; //0,0,0,0,0,0,0,0,0,0,0,0,0    1,1,1,1,1,1,1,1,1,1,1,1,1
 int score=0;
 
-int encycle_mode=1,setting_mode=0;//0Àº ÀÏ¹İ °ÔÀÓ ÇÃ·¡ÀÌ, 1Àº ¼ıÀÚ µµ°¨ , 2´Â Æ©Åä¸®¾ó  / setting Àº 0Àº ¼³Á¤ ¹Û, 1Àº ¼³Á¤ ¾È, 2´Â ¼³Á¤¿¡¼­ °ÔÀÓ Á¾·á  
+int encycle_mode=1,setting_mode=0;//0ì€ ì¼ë°˜ ê²Œì„ í”Œë˜ì´, 1ì€ ìˆ«ì ë„ê° , 2ëŠ” íŠœí† ë¦¬ì–¼  / setting ì€ 0ì€ ì„¤ì • ë°–, 1ì€ ì„¤ì • ì•ˆ, 2ëŠ” ì„¤ì •ì—ì„œ ê²Œì„ ì¢…ë£Œ  
 int height=0,set_type[5]={1,1,1,1,0};
 
 int count1=0,count2=0,count3=0,count6=0,count12=0,count24=0,end_counting=1;
@@ -54,9 +54,9 @@ char name[26];
 
 int tuto_phase=0;
 
-int game_test=0;//0 ±âº» 1 Å×½ºÆ® 
+int game_test=0;//0 ê¸°ë³¸ 1 í…ŒìŠ¤íŠ¸ 
 
-int num_pos[17][26]={//¸ã À§Ä¡ °í·Áx 
+int num_pos[17][26]={//ë©¥ ìœ„ì¹˜ ê³ ë ¤x 
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -87,7 +87,7 @@ ofstream fout;
 ifstream fin;
 
 ////////////////////////////////////////////////////////////////////////////
-void textcolor(int foreground, int background) //±ÛÀÚ»ö 
+void textcolor(int foreground, int background) //ê¸€ììƒ‰ 
 { 
 int color=foreground+background*16; 
 SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color); 
@@ -114,7 +114,7 @@ void Write(int x, int y, int foreground, int background, char text[10000]){
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 //////////////////////////////////////////////
-void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx 
+void Num_write(int init_num_x, int init_num_y,float num){//ë©¥ ìœ„ì¹˜ ê³ ë ¤x 
 	
 	max_num_color=BLACK;
 	if(num_pos[init_num_y][init_num_x]==max_num)
@@ -130,7 +130,7 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	else
 	num_back_color1=DARKGRAY;
 	
-	//////////////////////////////////////////////////////////////ÄÃ·¯Ä«µå 
+	//////////////////////////////////////////////////////////////ì»¬ëŸ¬ì¹´ë“œ 
 	if((encycle_mode!=1&&init_num_y<=16)||(encycle_mode==1&&init_num_y<=12))
 	if(num==1){
 	Write(init_num_x+MAPX,init_num_y+MAPY,BLACK  ,num_back_color," ");
@@ -138,7 +138,7 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	Write(init_num_x+5+MAPX,init_num_y+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color," ");
-	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,WHITE,CYAN," £± ");
+	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,WHITE,CYAN," ï¼‘ ");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,BLACK  ,num_back_color," ");
@@ -151,7 +151,7 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	Write(init_num_x+5+MAPX,init_num_y+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color," ");
-	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,WHITE,LIGHTRED," £² ");
+	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,WHITE,LIGHTRED," ï¼’ ");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,BLACK  ,num_back_color," ");
@@ -164,7 +164,7 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	Write(init_num_x+5+MAPX,init_num_y+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color," ");
-	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,BLACK,WHITE," £³ ");
+	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,BLACK,WHITE," ï¼“ ");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,BLACK  ,num_back_color," ");
@@ -177,7 +177,7 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	Write(init_num_x+5+MAPX,init_num_y+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color," ");
-	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,max_num_color,WHITE," £¶ ");
+	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,max_num_color,WHITE," ï¼– ");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,BLACK  ,num_back_color," ");
@@ -340,22 +340,22 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,WHITE  ,WHITE," ");
 	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,BLACK,BROWN,"o");
-	Write(init_num_x+2+MAPX,init_num_y+1+MAPY,WHITE,BROWN,"¡å");
+	Write(init_num_x+2+MAPX,init_num_y+1+MAPY,WHITE,BROWN,"â–¼");
 	Write(init_num_x+4+MAPX,init_num_y+1+MAPY,BLACK,BROWN,"o");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,WHITE  ,WHITE," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,WHITE  ,num_back_color,"'");
-	Write(init_num_x+1+MAPX,init_num_y+2+MAPY,BLACK ,BROWN," ¡Ô ");
+	Write(init_num_x+1+MAPX,init_num_y+2+MAPY,BLACK ,BROWN," âˆ‡ ");
 	Write(init_num_x+5+MAPX,init_num_y+2+MAPY,WHITE  ,num_back_color1,"'");
 	}
-/////////////////////////////////////////////////////////////////////Èæ¹éÄ«µå	
+/////////////////////////////////////////////////////////////////////í‘ë°±ì¹´ë“œ	
 		if(num==1+10000){
 	Write(init_num_x+MAPX,init_num_y+MAPY,BLACK  ,num_back_color," ");
 	Write(init_num_x+1+MAPX,init_num_y+MAPY,BLACK  ,DARKGRAY,"    ");
 	Write(init_num_x+5+MAPX,init_num_y+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color," ");
-	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,WHITE,DARKGRAY," £± ");
+	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,WHITE,DARKGRAY," ï¼‘ ");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,BLACK  ,num_back_color," ");
@@ -368,7 +368,7 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	Write(init_num_x+5+MAPX,init_num_y+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color," ");
-	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,WHITE,DARKGRAY," £² ");
+	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,WHITE,DARKGRAY," ï¼’ ");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,BLACK  ,num_back_color," ");
@@ -381,7 +381,7 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	Write(init_num_x+5+MAPX,init_num_y+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color," ");
-	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,BLACK,WHITE," £³ ");
+	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,BLACK,WHITE," ï¼“ ");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,BLACK  ,num_back_color," ");
@@ -394,7 +394,7 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	Write(init_num_x+5+MAPX,init_num_y+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color," ");
-	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,BLACK,WHITE," £¶ ");
+	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,BLACK,WHITE," ï¼– ");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,BLACK  ,num_back_color1," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,BLACK  ,num_back_color," ");
@@ -557,12 +557,12 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 	
 	Write(init_num_x+MAPX,init_num_y+1+MAPY,WHITE  ,WHITE," ");
 	Write(init_num_x+1+MAPX,init_num_y+1+MAPY,BLACK,DARKGRAY,"o");
-	Write(init_num_x+2+MAPX,init_num_y+1+MAPY,WHITE,DARKGRAY,"¡å");
+	Write(init_num_x+2+MAPX,init_num_y+1+MAPY,WHITE,DARKGRAY,"â–¼");
 	Write(init_num_x+4+MAPX,init_num_y+1+MAPY,BLACK,DARKGRAY,"o");
 	Write(init_num_x+5+MAPX,init_num_y+1+MAPY,WHITE  ,WHITE," ");
 	
 	Write(init_num_x+MAPX,init_num_y+2+MAPY,WHITE  ,num_back_color,"'");
-	Write(init_num_x+1+MAPX,init_num_y+2+MAPY,BLACK ,DARKGRAY," ¡Ô ");
+	Write(init_num_x+1+MAPX,init_num_y+2+MAPY,BLACK ,DARKGRAY," âˆ‡ ");
 	Write(init_num_x+5+MAPX,init_num_y+2+MAPY,WHITE  ,num_back_color1,"'");
 	}
 	/////////////////////////////////////////////////////////////////////
@@ -571,7 +571,7 @@ void Num_write(int init_num_x, int init_num_y,float num){//¸ã À§Ä¡ °í·Áx
 void Map(){
 	i=0;
 	j=0;
-	while(i<=25){//°¡·ÎÁÙ, »õ·ÎÁÙ
+	while(i<=25){//ê°€ë¡œì¤„, ìƒˆë¡œì¤„
 		while((j<=15&&encycle_mode!=1)||(j<=11&&encycle_mode==1)){
 			Write(MAPX+i,MAPY+j,BLACK,LIGHTGRAY," ");	
 			j+=1;
@@ -586,7 +586,7 @@ void Map(){
 	
 	i=0;
 	j=0;
-	while(i<=3){//°¡·ÎÁÙ, »õ·ÎÁÙ
+	while(i<=3){//ê°€ë¡œì¤„, ìƒˆë¡œì¤„
 		while((j<=3&&encycle_mode!=1)||(j<=2&&encycle_mode==1)){
 			j1=0;
 			i1=0;
@@ -635,7 +635,7 @@ void Map(){
 	
 	i=0;
 	j=0;
-	while(i<=3){//°¡·ÎÁÙ, »õ·ÎÁÙ Àç¿ÜÇÑ, Ä«µå°¡ À§Ä¡ÇÑ ºÎºĞ 
+	while(i<=3){//ê°€ë¡œì¤„, ìƒˆë¡œì¤„ ì¬ì™¸í•œ, ì¹´ë“œê°€ ìœ„ì¹˜í•œ ë¶€ë¶„ 
 		while((j<=3&&encycle_mode!=1)||(j<=2&&encycle_mode==1)){
 			j1=0;
 			i1=0;
@@ -752,11 +752,11 @@ void Background(){
 		Write(MAPX+12,3,BLACK,LIGHTRED,"  ");
 	}
 	else if(next_num==3){
-		Write(MAPX+12,2,BLACK,WHITE,"£³");
+		Write(MAPX+12,2,BLACK,WHITE,"ï¼“");
 		Write(MAPX+12,3,BROWN,WHITE,"__");
 	}
 	else if(next_num==6){
-		Write(MAPX+12,2,BLACK,WHITE,"£¶");
+		Write(MAPX+12,2,BLACK,WHITE,"ï¼–");
 		Write(MAPX+12,3,BROWN,WHITE,"__");
 	}
 	else if(next_num==12&&max_num>48){
@@ -776,7 +776,7 @@ void Background(){
 		Write(MAPX+12,3,BROWN,WHITE,"__");
 	}
 	else if((next_num>6&&max_num<=48)||(next_num>=24&&max_num<=192)||(next_num>=48&&max_num<=768)||(next_num>=96&&max_num<=3072)||(next_num>192&&max_num>3072)){
-		Write(MAPX+12,2,BLACK,WHITE,"£«");
+		Write(MAPX+12,2,BLACK,WHITE,"ï¼‹");
 		Write(MAPX+12,3,BROWN,WHITE,"__");
 	}	
 	}
@@ -818,7 +818,7 @@ void Counting(){
 }
 
 void Max_num_detect(){
-	i=0;                   //¸Æ½º ³Ñ¹ö °¨Áö 
+	i=0;                   //ë§¥ìŠ¤ ë„˜ë²„ ê°ì§€ 
 	j=0;
 	while(i<=25){
 		while(j<=16){
@@ -883,7 +883,7 @@ void Next_num_random(){
 		next_num=768;	
 		
 		if(game_test==1){
-		if(next_num%3==0)//Å×½ºÆ® 
+		if(next_num%3==0)//í…ŒìŠ¤íŠ¸ 
 		next_num*=16;
 		else
 		next_num=192;
@@ -908,18 +908,18 @@ void Num_display(){
 	}
 }
 /////////////////////////////////////////////////////////////////////////
-void CursorView()             //Ä¿¼­ »èÁ¦ 
+void CursorView()             //ì»¤ì„œ ì‚­ì œ 
 {
     CONSOLE_CURSOR_INFO cursorInfo = { 0, };
-    cursorInfo.dwSize = 1; //Ä¿¼­ ±½±â (1 ~ 100)
-    cursorInfo.bVisible = FALSE; //Ä¿¼­ Visible TRUE(º¸ÀÓ) FALSE(¼û±è)
+    cursorInfo.dwSize = 1; //ì»¤ì„œ êµµê¸° (1 ~ 100)
+    cursorInfo.bVisible = FALSE; //ì»¤ì„œ Visible TRUE(ë³´ì„) FALSE(ìˆ¨ê¹€)
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
 }
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 void Setting(){
 	Write(MAPX+17,3+29,DARKGRAY,WHITE,"            ");				 
-	Write(MAPX+17,4+29,DARKGRAY,WHITE,"£Ï£Ğ£Ô£É£Ï£Î");
+	Write(MAPX+17,4+29,DARKGRAY,WHITE,"ï¼¯ï¼°ï¼´ï¼©ï¼¯ï¼®");
 	Write(MAPX+17,5+29,DARKGRAY,WHITE,"            ");
 					
 	Write(MAPX,1+29,DARKGRAY,WHITE,"                               ");
@@ -937,56 +937,56 @@ void Setting(){
 	Write(MAPX-3,11+29,DARKGRAY,WHITE,"  option                           ");
 	Write(MAPX-1,12+29,DARKGRAY,WHITE,"                                   ");
 	if(set_type[0]==1){
-	Write(MAPX-1,13+29,LIGHTRED,LIGHTGRAY,"¡Ü");
+	Write(MAPX-1,13+29,LIGHTRED,LIGHTGRAY,"â—");
 	Write(MAPX+1,13+29,DARKGRAY,LIGHTGRAY," music                   ");
-	Write(MAPX+23,13+29,WHITE,LIGHTRED," ¢Ü ");	
+	Write(MAPX+23,13+29,WHITE,LIGHTRED," â™ª ");	
 	}	
 	else if(set_type[0]==0){
-	Write(MAPX-1,13+29,DARKGRAY,LIGHTGRAY,"¡Ü");
+	Write(MAPX-1,13+29,DARKGRAY,LIGHTGRAY,"â—");
 	Write(MAPX+1,13+29,DARKGRAY,LIGHTGRAY," music                   ");
-	Write(MAPX+23,13+29,WHITE,DARKGRAY," ¢Ü ");	
+	Write(MAPX+23,13+29,WHITE,DARKGRAY," â™ª ");	
 	}
 	if(set_type[2]==1)//visible key 
 	Write(MAPX-1,14+29,LIGHTGRAY,WHITE,">>'1'                              ");
 	else if(set_type[2]==0)//visible key
 	Write(MAPX-1,14+29,LIGHTGRAY,WHITE,"                                   ");
 	if(set_type[1]==1){
-	Write(MAPX-1,15+29,LIGHTRED,LIGHTGRAY,"¡Ü");
+	Write(MAPX-1,15+29,LIGHTRED,LIGHTGRAY,"â—");
 	Write(MAPX+1,15+29,DARKGRAY,LIGHTGRAY," sound effect            ");
-	Write(MAPX+23,15+29,WHITE,LIGHTRED," ¡Ú ");
+	Write(MAPX+23,15+29,WHITE,LIGHTRED," â˜… ");
 	}
 	else if(set_type[1]==0){
-	Write(MAPX-1,15+29,DARKGRAY,LIGHTGRAY,"¡Ü");
+	Write(MAPX-1,15+29,DARKGRAY,LIGHTGRAY,"â—");
 	Write(MAPX+1,15+29,DARKGRAY,LIGHTGRAY," sound effect            ");
-	Write(MAPX+23,15+29,WHITE,DARKGRAY," ¡Ú ");
+	Write(MAPX+23,15+29,WHITE,DARKGRAY," â˜… ");
 	}
 	if(set_type[2]==1)//visible key
 	Write(MAPX-1,16+29,LIGHTGRAY,WHITE,">>'2'                              ");
 	else if(set_type[2]==0)//visible key
 	Write(MAPX-1,16+29,LIGHTGRAY,WHITE,"                                   ");
 	if(set_type[2]==1){
-	Write(MAPX-1,17+29,LIGHTRED,LIGHTGRAY,"¡Ü");
+	Write(MAPX-1,17+29,LIGHTRED,LIGHTGRAY,"â—");
 	Write(MAPX+1,17+29,DARKGRAY,LIGHTGRAY," visible key             ");
-	Write(MAPX+23,17+29,WHITE,LIGHTRED," ¡× ");
+	Write(MAPX+23,17+29,WHITE,LIGHTRED," Â§ ");
 	}
 	else if(set_type[2]==0){
-	Write(MAPX-1,17+29,DARKGRAY,LIGHTGRAY,"¡Ü");
+	Write(MAPX-1,17+29,DARKGRAY,LIGHTGRAY,"â—");
 	Write(MAPX+1,17+29,DARKGRAY,LIGHTGRAY," visible key             ");
-	Write(MAPX+23,17+29,WHITE,DARKGRAY," ¡× ");
+	Write(MAPX+23,17+29,WHITE,DARKGRAY," Â§ ");
 	}
 	if(set_type[2]==1)//visible key
 	Write(MAPX-1,18+29,LIGHTGRAY,WHITE,"<<'3'                              ");
 	else if(set_type[2]==0)//visible key
 	Write(MAPX-1,18+29,LIGHTGRAY,WHITE,"                                   ");
 	if(set_type[3]==1){
-	Write(MAPX-1,19+29,LIGHTRED,LIGHTGRAY,"¡Ü");
+	Write(MAPX-1,19+29,LIGHTRED,LIGHTGRAY,"â—");
 	Write(MAPX+1,19+29,DARKGRAY,LIGHTGRAY," record save            ");
-	Write(MAPX+23,19+29,WHITE,LIGHTRED," ¡î ");
+	Write(MAPX+23,19+29,WHITE,LIGHTRED," âˆš ");
 	}
 	else if(set_type[3]==0){
-	Write(MAPX-1,19+29,DARKGRAY,LIGHTGRAY,"¡Ü");
+	Write(MAPX-1,19+29,DARKGRAY,LIGHTGRAY,"â—");
 	Write(MAPX+1,19+29,DARKGRAY,LIGHTGRAY," record save            ");
-	Write(MAPX+23,19+29,WHITE,DARKGRAY," ¡î ");
+	Write(MAPX+23,19+29,WHITE,DARKGRAY," âˆš ");
 	}
 	if(set_type[2]==1)//visible key
 	Write(MAPX-1,20+29,LIGHTGRAY,WHITE,">>'4'                              ");
@@ -994,19 +994,19 @@ void Setting(){
 	Write(MAPX-1,20+29,LIGHTGRAY,WHITE,"                                   ");
 	if(encycle_mode==1){
 		if(set_type[4]==1){
-		Write(MAPX-1,21+29,LIGHTRED,LIGHTGRAY,"¡Ü");
+		Write(MAPX-1,21+29,LIGHTRED,LIGHTGRAY,"â—");
 		Write(MAPX+1,21+29,DARKGRAY,LIGHTGRAY," start boost            ");
-		Write(MAPX+23,21+29,WHITE,LIGHTRED," ¢× ");
+		Write(MAPX+23,21+29,WHITE,LIGHTRED," â†™ ");
 		}
 		else if(set_type[4]==0){
-		Write(MAPX-1,21+29,DARKGRAY,LIGHTGRAY,"¡Ü");
+		Write(MAPX-1,21+29,DARKGRAY,LIGHTGRAY,"â—");
 		Write(MAPX+1,21+29,DARKGRAY,LIGHTGRAY," start boost            ");
-		Write(MAPX+23,21+29,WHITE,DARKGRAY," ¢× ");
+		Write(MAPX+23,21+29,WHITE,DARKGRAY," â†™ ");
 		}
 		else if(set_type[4]==2){
-		Write(MAPX-1,21+29,CYAN,LIGHTGRAY,"¡Ü");
+		Write(MAPX-1,21+29,CYAN,LIGHTGRAY,"â—");
 		Write(MAPX+1,21+29,CYAN,LIGHTGRAY," mega boost             ");
-		Write(MAPX+23,21+29,WHITE,CYAN," ¢× ");
+		Write(MAPX+23,21+29,WHITE,CYAN," â†™ ");
 		}
 		if(set_type[2]==1)//visible key
 		Write(MAPX-1,22+29,LIGHTGRAY,WHITE,">>'5'                              ");
@@ -1080,7 +1080,7 @@ void Mov_detect(){
 				
 				if(encycle_mode==0||(encycle_mode==2&&tuto_phase>=4)){
 				if(mov_y==2){
-					if(moving_true>0){   //¼ıÀÚ ·£´ı ¼ÒÈ¯ 
+					if(moving_true>0){   //ìˆ«ì ëœë¤ ì†Œí™˜ 
 					do{
 						num_rand=(rand()%4)*6+1;				
 					}while(num_pos[13][num_rand]!=0||num_pos[12][num_rand]!=0);
@@ -1179,7 +1179,7 @@ void Mov_detect(){
 				
 				if(encycle_mode==0||(encycle_mode==2&&tuto_phase>=4)){
 				if(mov_y==2){
-					if(moving_true>0){   //¼ıÀÚ ·£´ı ¼ÒÈ¯ 
+					if(moving_true>0){   //ìˆ«ì ëœë¤ ì†Œí™˜ 
 					do{
 						num_rand=(rand()%4)*6+1;				
 					}while(num_pos[0][num_rand]!=0||num_pos[1][num_rand]!=0);
@@ -1270,7 +1270,7 @@ void Mov_detect(){
 				
 				if(encycle_mode==0||(encycle_mode==2&&tuto_phase>=4)){
 				if(mov_x==5){
-					if(moving_true>0){   //¼ıÀÚ ·£´ı ¼ÒÈ¯ 
+					if(moving_true>0){   //ìˆ«ì ëœë¤ ì†Œí™˜ 
 					do{
 						num_rand=(rand()%4)*4+1;				
 					}while(num_pos[num_rand][20]!=0||num_pos[num_rand][19]!=0);
@@ -1357,7 +1357,7 @@ void Mov_detect(){
 				
 				if(encycle_mode==0||(encycle_mode==2&&tuto_phase>=4)){
 				if(mov_x==5){
-					if(moving_true>0){   //¼ıÀÚ ·£´ı ¼ÒÈ¯ 
+					if(moving_true>0){   //ìˆ«ì ëœë¤ ì†Œí™˜ 
 					do{
 						num_rand=(rand()%4)*4+1;				
 					}while(num_pos[num_rand][0]!=0||num_pos[num_rand][1]!=0);
@@ -1402,7 +1402,7 @@ void Mov_detect(){
 			else if(but=='r'&&encycle_mode!=2){
 				
 				if(setting_mode==1){
-				fout.open("Num_set.txt");//¼ıÀÚ Á¾·ù 
+				fout.open("Num_set.txt");//ìˆ«ì ì¢…ë¥˜ 
 				i=0;
 				file_int=0;
 				while(i<=4){
@@ -1435,9 +1435,9 @@ void Mov_detect(){
 					Write(MAPX,21,WHITE,DARKGRAY,"                          "); 
 					Write(MAPX,22,WHITE,DARKGRAY," Press 'q' to Play THREES "); 
 					Write(MAPX,23,WHITE,DARKGRAY,"                          "); 
-					Write(MAPX+7,3,CYAN,WHITE,"£Ô"); 
-					Write(MAPX+9,3,LIGHTRED,WHITE,"£È"); 
-					Write(MAPX+11,3,DARKGRAY,WHITE,"£Ò£Å£Å£Ó");
+					Write(MAPX+7,3,CYAN,WHITE,"ï¼´"); 
+					Write(MAPX+9,3,LIGHTRED,WHITE,"ï¼¨"); 
+					Write(MAPX+11,3,DARKGRAY,WHITE,"ï¼²ï¼¥ï¼¥ï¼³");
 					}
 //////////////////////////////////////////	
 									
@@ -1445,7 +1445,7 @@ void Mov_detect(){
 						
 					if(6+29-height>=0&&6+29-height<=29){
 					Write(MAPX-1,6+29,WHITE,WHITE,"                            ");
-					Gotoxy(MAPX-1,6+29-height);//maxÁ¡¼ö µğ½ºÇÃ·¡ÀÌ 
+					Gotoxy(MAPX-1,6+29-height);//maxì ìˆ˜ ë””ìŠ¤í”Œë˜ì´ 
 					textcolor(BROWN,WHITE);
 					cout<<file_char;
 					textcolor(DARKGRAY,WHITE);
@@ -1453,7 +1453,7 @@ void Mov_detect(){
 					}	
 					if(7+29-height>=0&&7+29-height<=29){
 					Write(MAPX-1,7+29,LIGHTGRAY,LIGHTGRAY,"                            ");
-					Gotoxy(MAPX,7+29-height);//maxÁ¡¼ö µğ½ºÇÃ·¡ÀÌ 
+					Gotoxy(MAPX,7+29-height);//maxì ìˆ˜ ë””ìŠ¤í”Œë˜ì´ 
 					textcolor(DARKGRAY,LIGHTGRAY);
 					cout<<"MAX SCORE | "<<file_int1;
 					}					
@@ -1545,17 +1545,17 @@ void Mov_detect(){
 					
 					Write(MAPX+5+j*3,3,CYAN,WHITE,"  "); 
 					if(MAPX+7+j*3<41)
-					Write(MAPX+7+j*3,3,CYAN,WHITE,"£Ô"); 
+					Write(MAPX+7+j*3,3,CYAN,WHITE,"ï¼´"); 
 					if(MAPX+9+j*3<41)
-					Write(MAPX+9+j*3,3,LIGHTRED,WHITE,"£È"); 
+					Write(MAPX+9+j*3,3,LIGHTRED,WHITE,"ï¼¨"); 
 					if(MAPX+11+j*3<41)
-					Write(MAPX+11+j*3,3,DARKGRAY,WHITE,"£Ò"); 
+					Write(MAPX+11+j*3,3,DARKGRAY,WHITE,"ï¼²"); 
 					if(MAPX+13+j*3<41)
-					Write(MAPX+13+j*3,3,DARKGRAY,WHITE,"£Å"); 
+					Write(MAPX+13+j*3,3,DARKGRAY,WHITE,"ï¼¥"); 
 					if(MAPX+15+j*3<41)
-					Write(MAPX+15+j*3,3,DARKGRAY,WHITE,"£Å"); 
+					Write(MAPX+15+j*3,3,DARKGRAY,WHITE,"ï¼¥"); 
 					if(MAPX+17+j*3<41)
-					Write(MAPX+17+j*3,3,DARKGRAY,WHITE,"£Ó"); 
+					Write(MAPX+17+j*3,3,DARKGRAY,WHITE,"ï¼³"); 
 					
 					
 					Sleep(5);
@@ -1609,17 +1609,17 @@ void Mov_detect(){
 					
 					Write(MAPX+6+j*3,3,CYAN,WHITE,"  "); 
 					if(MAPX+7+j*3<41)
-					Write(MAPX+7+j*3,3,CYAN,WHITE,"£Ô"); 
+					Write(MAPX+7+j*3,3,CYAN,WHITE,"ï¼´"); 
 					if(MAPX+9+j*3<41)
-					Write(MAPX+9+j*3,3,LIGHTRED,WHITE,"£È"); 
+					Write(MAPX+9+j*3,3,LIGHTRED,WHITE,"ï¼¨"); 
 					if(MAPX+11+j*3<41)
-					Write(MAPX+11+j*3,3,DARKGRAY,WHITE,"£Ò"); 
+					Write(MAPX+11+j*3,3,DARKGRAY,WHITE,"ï¼²"); 
 					if(MAPX+13+j*3<41)
-					Write(MAPX+13+j*3,3,DARKGRAY,WHITE,"£Å"); 
+					Write(MAPX+13+j*3,3,DARKGRAY,WHITE,"ï¼¥"); 
 					if(MAPX+15+j*3<41)
-					Write(MAPX+15+j*3,3,DARKGRAY,WHITE,"£Å"); 
+					Write(MAPX+15+j*3,3,DARKGRAY,WHITE,"ï¼¥"); 
 					if(MAPX+17+j*3<41)
-					Write(MAPX+17+j*3,3,DARKGRAY,WHITE,"£Ó"); 
+					Write(MAPX+17+j*3,3,DARKGRAY,WHITE,"ï¼³"); 
 					
 					
 					Sleep(5);
@@ -1665,7 +1665,7 @@ void Mov_detect(){
 			}	
 			else if(but=='q'&&encycle_mode==0&&end_counting!=0&&setting_mode==1){
 				
-				fout.open("Num_set.txt");//¼ıÀÚ Á¾·ù 
+				fout.open("Num_set.txt");//ìˆ«ì ì¢…ë¥˜ 
 				i=0;
 				file_int=0;
 				while(i<=4){
@@ -1704,12 +1704,12 @@ void Mov_detect(){
 					Write(MAPX,21,WHITE,DARKGRAY,"                          "); 
 					Write(MAPX,22,WHITE,DARKGRAY," Press 'q' to Play THREES "); 
 					Write(MAPX,23,WHITE,DARKGRAY,"                          "); 
-					Write(MAPX+7,3,CYAN,WHITE,"£Ô"); 
-					Write(MAPX+9,3,LIGHTRED,WHITE,"£È"); 
-					Write(MAPX+11,3,DARKGRAY,WHITE,"£Ò£Å£Å£Ó");
+					Write(MAPX+7,3,CYAN,WHITE,"ï¼´"); 
+					Write(MAPX+9,3,LIGHTRED,WHITE,"ï¼¨"); 
+					Write(MAPX+11,3,DARKGRAY,WHITE,"ï¼²ï¼¥ï¼¥ï¼³");
 //////////////////////////////////////////	
 					Write(MAPX+17,3+29,DARKGRAY,WHITE,"            ");				 
-					Write(MAPX+17,4+29,DARKGRAY,WHITE,"£Ï£Ğ£Ô£É£Ï£Î");
+					Write(MAPX+17,4+29,DARKGRAY,WHITE,"ï¼¯ï¼°ï¼´ï¼©ï¼¯ï¼®");
 					Write(MAPX+17,5+29,DARKGRAY,WHITE,"            ");
 					
 					Write(MAPX,1+29,DARKGRAY,WHITE,"                               ");
@@ -1725,7 +1725,7 @@ void Mov_detect(){
 						
 					if(6+29-height>=0&&6+29-height<=29){
 					Write(MAPX-1,6+29,WHITE,WHITE,"                            ");
-					Gotoxy(MAPX-1,6+29-height);//maxÁ¡¼ö µğ½ºÇÃ·¡ÀÌ 
+					Gotoxy(MAPX-1,6+29-height);//maxì ìˆ˜ ë””ìŠ¤í”Œë˜ì´ 
 					textcolor(BROWN,WHITE);
 					cout<<file_char;
 					textcolor(DARKGRAY,WHITE);
@@ -1733,7 +1733,7 @@ void Mov_detect(){
 					}	
 					if(7+29-height>=0&&7+29-height<=29){
 					Write(MAPX-1,7+29,LIGHTGRAY,LIGHTGRAY,"                            ");
-					Gotoxy(MAPX,7+29-height);//maxÁ¡¼ö µğ½ºÇÃ·¡ÀÌ 
+					Gotoxy(MAPX,7+29-height);//maxì ìˆ˜ ë””ìŠ¤í”Œë˜ì´ 
 					textcolor(DARKGRAY,LIGHTGRAY);
 					cout<<"MAX SCORE | "<<file_int1;
 					}					
@@ -1751,7 +1751,7 @@ void Mov_detect(){
 int main(){
 	Manu :
 ////////////////////////////
-	fin.open("Num_set.txt");//¼³Á¤   
+	fin.open("Num_set.txt");//ì„¤ì •   
 	file_int=0;
 	fin>>file_int;
 	i=0;
@@ -1783,9 +1783,9 @@ int main(){
 	Background();
 	Map();
 	
-	Write(MAPX+7,3,CYAN,WHITE,"£Ô"); 
-	Write(MAPX+9,3,LIGHTRED,WHITE,"£È"); 
-	Write(MAPX+11,3,DARKGRAY,WHITE,"£Ò£Å£Å£Ó"); 
+	Write(MAPX+7,3,CYAN,WHITE,"ï¼´"); 
+	Write(MAPX+9,3,LIGHTRED,WHITE,"ï¼¨"); 
+	Write(MAPX+11,3,DARKGRAY,WHITE,"ï¼²ï¼¥ï¼¥ï¼³"); 
 	
 	Write(MAPX,2,DARKGRAY,WHITE,"_____"); 
 	Write(MAPX,3,WHITE,DARKGRAY," :== "); 
@@ -1806,7 +1806,7 @@ int main(){
 	Write(MAPX,23,WHITE,DARKGRAY,"                          "); 
 	
 ////////////////////////////////
-fin.open("have_num.txt");//¼ıÀÚ Á¾·ù  
+fin.open("have_num.txt");//ìˆ«ì ì¢…ë¥˜  
 file_int=0;
 fin>>file_int;
 i=0;
@@ -1819,7 +1819,7 @@ fin.close();
 //////////////////////////////////////
 
 	Sleep(150);
-	i2=0;//number µğ½ºÇÃ·¡ÀÌ  
+	i2=0;//number ë””ìŠ¤í”Œë˜ì´  
 	j2=0;
 	i1=0;		
 	while(j2<=2){
@@ -1840,20 +1840,20 @@ fin.close();
 	Num_display();
 	
 	
-	while(encycle_mode==1){   //½ÃÀÛÇÒ ¶§ ½ÃÀÛ¹öÆ° ÅğÀå, ³Ø½ºÆ® ³Ñ¹ö  µğ½ºÇÃ·¡ÀÌ µîÀå 
+	while(encycle_mode==1){   //ì‹œì‘í•  ë•Œ ì‹œì‘ë²„íŠ¼ í‡´ì¥, ë„¥ìŠ¤íŠ¸ ë„˜ë²„  ë””ìŠ¤í”Œë˜ì´ ë“±ì¥ 
 	    Mov_detect();
 			
 	}
-////////////////////////////////////////////// ½ÃÀÛ Ã¢	
+////////////////////////////////////////////// ì‹œì‘ ì°½	
 ////////////////////////////////////////////
 	
 if(encycle_mode==2&&tuto_phase==0){
 Map();
 Background();
 Sleep(500);	
-Write(MAPX+7,3,CYAN,WHITE,"£Ô"); 
-Write(MAPX+9,3,LIGHTRED,WHITE,"£È"); 
-Write(MAPX+11,3,DARKGRAY,WHITE,"£Ò£Å£Å£Ó"); 
+Write(MAPX+7,3,CYAN,WHITE,"ï¼´"); 
+Write(MAPX+9,3,LIGHTRED,WHITE,"ï¼¨"); 
+Write(MAPX+11,3,DARKGRAY,WHITE,"ï¼²ï¼¥ï¼¥ï¼³"); 
 Write(12,24,DARKGRAY,WHITE,"Press 'q' to start"); 
 tuto_phase+=1;
 
@@ -1863,9 +1863,9 @@ if(kbhit()){
 	if(but=='q'){
 Sleep(300);		
 Write(MAPX-1,3,DARKGRAY,WHITE,"   Introducing"); 
-Write(MAPX+13,3,CYAN,WHITE," £± "); 
+Write(MAPX+13,3,CYAN,WHITE," ï¼‘ "); 
 Write(MAPX+17,3,DARKGRAY,WHITE,"and"); 
-Write(MAPX+20,3,LIGHTRED,WHITE," £²"); 
+Write(MAPX+20,3,LIGHTRED,WHITE," ï¼’"); 
 Write(MAPX+22,3,DARKGRAY,WHITE,"!  "); 
 Write(8,24,DARKGRAY,WHITE,"Using w/a/s/d to move them");
 Sleep(100);	
@@ -1883,16 +1883,16 @@ Mov_detect();
 if(num_pos[1+4][1+6]!=1){
 Write(MAPX-1,3,DARKGRAY,WHITE,"       Using the wall       ");
 Write(MAPX+4,4,DARKGRAY,WHITE,"Combine"); 
-Write(MAPX+11,4,CYAN,WHITE," £± "); 
+Write(MAPX+11,4,CYAN,WHITE," ï¼‘ "); 
 Write(MAPX+15,4,DARKGRAY,WHITE,"and"); 
-Write(MAPX+19,4,LIGHTRED,WHITE," £²"); 
+Write(MAPX+19,4,LIGHTRED,WHITE," ï¼’"); 
 Write(8,24,DARKGRAY,WHITE,"                           "); 
 tuto_phase+=1;
 }
 }
 
 while(tuto_phase==3){
-	/////////////////////////////º® 
+	/////////////////////////////ë²½ 
 	i=0;
 	while(i<=25){
 		if(i<=10||i>=15){
@@ -1903,22 +1903,22 @@ while(tuto_phase==3){
 	}
 	j=0;
 	while(j<=16){
-		Write(MAPX-2,MAPY+j,LIGHTRED,WHITE,"¡«");
-		Write(MAPX+25+1,MAPY+j,LIGHTRED,WHITE,"¡«");
+		Write(MAPX-2,MAPY+j,LIGHTRED,WHITE,"âˆ¥");
+		Write(MAPX+25+1,MAPY+j,LIGHTRED,WHITE,"âˆ¥");
 		j+=1;
 	}
-	Write(MAPX-2,MAPY-1,LIGHTRED,WHITE,"¡á");
-	Write(MAPX-2,MAPY+17,LIGHTRED,WHITE,"¡á");
-	Write(MAPX+26,MAPY-1,LIGHTRED,WHITE,"¡á");
-	Write(MAPX+26,MAPY+17,LIGHTRED,WHITE,"¡á");
+	Write(MAPX-2,MAPY-1,LIGHTRED,WHITE,"â– ");
+	Write(MAPX-2,MAPY+17,LIGHTRED,WHITE,"â– ");
+	Write(MAPX+26,MAPY-1,LIGHTRED,WHITE,"â– ");
+	Write(MAPX+26,MAPY+17,LIGHTRED,WHITE,"â– ");
 	Write(MAPX+11,MAPY-1,LIGHTRED,WHITE,"WALL");
 	Write(MAPX+11,MAPY+17,LIGHTRED,WHITE,"WALL");
 	//////////////////////////
 Mov_detect();
 Max_num_detect();
 Counting();
-if(count3==1){//3 °¨Áö »ó¼ö
-	/////////////////////////////º® 
+if(count3==1){//3 ê°ì§€ ìƒìˆ˜
+	/////////////////////////////ë²½ 
 	i=0;
 	while(i<=29){
 		Write(MAPX-2+i,MAPY-1,LIGHTRED,WHITE," ");
@@ -1945,7 +1945,7 @@ Num_display();
 Mov_detect();
 Counting();
 Max_num_detect();
-if(count3>=2){//3 °¨Áö »ó¼ö
+if(count3>=2){//3 ê°ì§€ ìƒìˆ˜
 	Write(MAPX-1,3,DARKGRAY,WHITE,"         3 + 3 = 6         ");
 	Write(MAPX+4,4,DARKGRAY,WHITE,"                      ");
 	Write(9,24,DARKGRAY,WHITE,"                              ");	
@@ -1958,7 +1958,7 @@ Num_display();
 Mov_detect();
 Counting();
 Max_num_detect();
-if(count6>=1){//3 °¨Áö »ó¼ö
+if(count6>=1){//3 ê°ì§€ ìƒìˆ˜
 	Write(MAPX-3,3,DARKGRAY,WHITE,"If numbers above 3 are combined");
 	Write(MAPX+3,4,LIGHTRED,WHITE,"they must be the same!");
 	Write(5,24,DARKGRAY,WHITE,"Only numbers above 3 are doubled");	
@@ -1971,7 +1971,7 @@ Num_display();
 Mov_detect();
 Counting();
 Max_num_detect();
-if(count12>=1){//3 °¨Áö »ó¼ö
+if(count12>=1){//3 ê°ì§€ ìƒìˆ˜
 	Write(MAPX-3,3,DARKGRAY,WHITE,"            Make 24!           ");
 	Write(MAPX+3,4,LIGHTRED,WHITE,"                            ");
 	Write(5,24,DARKGRAY,WHITE,"                                     ");	
@@ -1984,11 +1984,11 @@ Num_display();
 Counting();
 Mov_detect();
 Max_num_detect();
-if(count24>=1){//3 °¨Áö »ó¼ö
+if(count24>=1){//3 ê°ì§€ ìƒìˆ˜
 	Write(MAPX+2,3,DARKGRAY,WHITE," This is ");
-	Write(MAPX+11,3,CYAN,WHITE,"£Ô"); 
-	Write(MAPX+13,3,LIGHTRED,WHITE,"£È"); 
-	Write(MAPX+15,3,DARKGRAY,WHITE,"£Ò£Å£Å£Ó"); 
+	Write(MAPX+11,3,CYAN,WHITE,"ï¼´"); 
+	Write(MAPX+13,3,LIGHTRED,WHITE,"ï¼¨"); 
+	Write(MAPX+15,3,DARKGRAY,WHITE,"ï¼²ï¼¥ï¼¥ï¼³"); 
 	Write(12,24,DARKGRAY,WHITE,"Press 'q' to skip!"); 
 while(tuto_phase==7){
 if(kbhit()){
@@ -2046,12 +2046,12 @@ tuto_phase=10;
 }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////Æ©Åä¸®¾ó
+//////////////////////////////////////////////////////////////////////////////////////////////íŠœí† ë¦¬ì–¼
 //////////////////////////////////////////////////////////////////////////////////////////////
 if(encycle_mode==0&&tuto_phase!=10){
 	Counting();
 random=rand()%100;	
-if(random<=30){//³Ø½ºÆ® ³Ñ¹ö  
+if(random<=30){//ë„¥ìŠ¤íŠ¸ ë„˜ë²„  
 	next_num=1;
 	if(count1>=MAXCOUNT12)
 	next_num=2;
@@ -2064,7 +2064,7 @@ else if(random>30&&random<=60){
 else if(random>60&&random<=99)
 	next_num=3;
 	
-if(game_test==1)//Å×½ºÆ®  
+if(game_test==1)//í…ŒìŠ¤íŠ¸  
 next_num=1536;
 ////////////////////////////////////////	
 
@@ -2075,10 +2075,10 @@ next_num=1536;
 
 ////////////////////////////////////////////////////	
 	
-	srand((unsigned int) time(NULL));  //Ã³À½ ½ÃÀÛ Ä«µå ·£´ı¹èÄ¡  
-	if(game_test==0){//Å×½ºÆ®  
+	srand((unsigned int) time(NULL));  //ì²˜ìŒ ì‹œì‘ ì¹´ë“œ ëœë¤ë°°ì¹˜  
+	if(game_test==0){//í…ŒìŠ¤íŠ¸  
 	i1=0;
-	j1=0;//num_display ¶§¹®¿¡ i,j¿¡ 1 ºÙÀÓ 
+	j1=0;//num_display ë•Œë¬¸ì— i,jì— 1 ë¶™ì„ 
 	while(i1<=3){
 		while(j1<=3){
 			if(rand()%100<=55)
@@ -2109,14 +2109,14 @@ next_num=1536;
 	}	
 	}
 	
-	if(set_type[4]==1){//Ä«µå ºÎ½ºÆ® 
+	if(set_type[4]==1){//ì¹´ë“œ ë¶€ìŠ¤íŠ¸ 
 	do{
 	j=(rand()%4)*4+1;
 	i=(rand()%4)*6+1;
 	}while(num_pos[j][i]!=0);	
 	num_pos[j][i]=48;
 	}
-	else if(set_type[4]==2){//Ä«µå ºÎ½ºÆ® 
+	else if(set_type[4]==2){//ì¹´ë“œ ë¶€ìŠ¤íŠ¸ 
 	i=1;
 	while(i<=12){
 		if(have_num[i-1]==1&&have_num[i]==0&&i!=12)
@@ -2136,7 +2136,7 @@ next_num=1536;
 
 }
 
-///////////////////////////////////////////////////////////	°ÔÀÓ ÁøÇà  
+///////////////////////////////////////////////////////////	ê²Œì„ ì§„í–‰  
 //////////////////////////////////////////////////////////
 
 	while(end_counting!=0&&encycle_mode==0){
@@ -2202,14 +2202,14 @@ while(i<=3){
 	Mov_detect();
 	Max_num_detect();
 	
-	if(setting_mode==2){// ¼³Á¤¿¡¼­ °ÔÀÓ Á¾·á  
+	if(setting_mode==2){// ì„¤ì •ì—ì„œ ê²Œì„ ì¢…ë£Œ  
 	setting_mode=0;
 	goto Manu;
 }	
 ////////////////////////////////////////////////////////////////////////////////	
 
-if(set_type[3]==1){	//Á¡¼ö ÀúÀå 	
-fout.open("have_num.txt");//¼ıÀÚ Á¾·ù 
+if(set_type[3]==1){	//ì ìˆ˜ ì €ì¥ 	
+fout.open("have_num.txt");//ìˆ«ì ì¢…ë¥˜ 
 i=0;
 file_int=0;
 while(i<=12){
@@ -2257,7 +2257,7 @@ end_counting=0;
 	Map();   
 	Num_display();
 
-j=5;//³Ø½ºÆ® ³Ñ¹ö ÅğÀå 
+j=5;//ë„¥ìŠ¤íŠ¸ ë„˜ë²„ í‡´ì¥ 
 while(j>=0){
 	Write(19,j,DARKGRAY,WHITE,"next"); 
 	if(j!=5)
@@ -2280,19 +2280,19 @@ Write(19,0,WHITE,WHITE,"    ");
 			but=_getch();
 			if(but=='q'){
 				
-	Gotoxy(MAPX,MAPY-1);//Á¡¼ö µğ½ºÇÃ·¡ÀÌ  
+	Gotoxy(MAPX,MAPY-1);//ì ìˆ˜ ë””ìŠ¤í”Œë˜ì´  
 	textcolor(BLACK,WHITE);
 	cout<<"SCORE | "<<score;	
 			
 	Sleep(200);
 	Write(7,24,DARKGRAY,WHITE,"                                "); 			
-	i1=0;//Num_display¿¡ ÀÖ´Â i,j ¶§¹®¿¡ 1ºÙÀÓ   
+	i1=0;//Num_displayì— ìˆëŠ” i,j ë•Œë¬¸ì— 1ë¶™ì„   
 	j1=0;
 	while(i1<=3){
 		while(j1<=3){
 			if(num_pos[j1*4+1][i1*6+1]!=max_num&&num_pos[j1*4+1][i1*6+1]==1){
 			num_pos[j1*4+1][i1*6+1]+=10000;		
-			j3+=1;//Èæ¹éÈ­ »ó¼ö				
+			j3+=1;//í‘ë°±í™” ìƒìˆ˜				
 			}			
 			j1+=1;
 		}
@@ -2304,13 +2304,13 @@ Write(19,0,WHITE,WHITE,"    ");
 	j3=0;
 	Num_display();
 	//////////1
-	 i1=0;//Num_display¿¡ ÀÖ´Â i,j ¶§¹®¿¡ 1ºÙÀÓ   
+	 i1=0;//Num_displayì— ìˆëŠ” i,j ë•Œë¬¸ì— 1ë¶™ì„   
 	j1=0;
 	while(i1<=3){
 		while(j1<=3){
 			if(num_pos[j1*4+1][i1*6+1]!=max_num&&num_pos[j1*4+1][i1*6+1]==2){
 			num_pos[j1*4+1][i1*6+1]+=10000;			
-			j3+=1;//Èæ¹éÈ­ »ó¼ö	
+			j3+=1;//í‘ë°±í™” ìƒìˆ˜	
 			}			
 			j1+=1;
 		}
@@ -2325,13 +2325,13 @@ Write(19,0,WHITE,WHITE,"    ");
 	j2=0;
     while(j2<=12){
     i2=pow(2,j2);
-	i1=0;//Num_display¿¡ ÀÖ´Â i,j ¶§¹®¿¡ 1ºÙÀÓ   
+	i1=0;//Num_displayì— ìˆëŠ” i,j ë•Œë¬¸ì— 1ë¶™ì„   
 	j1=0;
 	while(i1<=3){
 		while(j1<=3){
 			if(num_pos[j1*4+1][i1*6+1]!=max_num&&num_pos[j1*4+1][i1*6+1]==3*i2){
 			num_pos[j1*4+1][i1*6+1]+=10000;			
-			j3+=1;//Èæ¹éÈ­ »ó¼ö	
+			j3+=1;//í‘ë°±í™” ìƒìˆ˜	
 			}			
 			j1+=1;
 		}
@@ -2341,15 +2341,15 @@ Write(19,0,WHITE,WHITE,"    ");
 	if(j3>=1) 
 	Sleep(100);
 	j3=0;
-	//////////1,2Á¦¿Ü 
+	//////////1,2ì œì™¸ 
 	Num_display();	
 	j2+=1;	
 	}	
-//////////	Á¡¼ö 
+//////////	ì ìˆ˜ 
 	j2=0;
     while(j2<=12){
     i2=pow(2,j2);
-	i1=0;//Num_display¿¡ ÀÖ´Â i,j ¶§¹®¿¡ 1ºÙÀÓ   
+	i1=0;//Num_displayì— ìˆëŠ” i,j ë•Œë¬¸ì— 1ë¶™ì„   
 	j1=0;
 	while(i1<=3){
 		while(j1<=3){
@@ -2359,7 +2359,7 @@ Write(19,0,WHITE,WHITE,"    ");
 			power_int=pow(3,j2+1);
 			cout<<"+"<<power_int;	
 			score+=power_int;	
-			j3+=1;//Á¡¼ö µğ½ºÇÃ·¡ÀÌ »ó¼ö
+			j3+=1;//ì ìˆ˜ ë””ìŠ¤í”Œë˜ì´ ìƒìˆ˜
 			}
 			else if(num_pos[j1*4+1][i1*6+1]==max_num&&num_pos[j1*4+1][i1*6+1]==3*i2){		
 			Gotoxy(i1*6+1+MAPX,j1*4+1+MAPY);
@@ -2367,10 +2367,10 @@ Write(19,0,WHITE,WHITE,"    ");
 			power_int=pow(3,j2+1);
 			cout<<"+"<<power_int;
 			score+=power_int;
-			j3+=1;//Á¡¼ö µğ½ºÇÃ·¡ÀÌ »ó¼ö
+			j3+=1;//ì ìˆ˜ ë””ìŠ¤í”Œë˜ì´ ìƒìˆ˜
 			}
 			
-			Gotoxy(MAPX,MAPY-1);//Á¡¼ö µğ½ºÇÃ·¡ÀÌ 
+			Gotoxy(MAPX,MAPY-1);//ì ìˆ˜ ë””ìŠ¤í”Œë˜ì´ 
 			textcolor(BLACK,WHITE);
 			cout<<"SCORE | "<<score;
 						
@@ -2384,7 +2384,7 @@ Write(19,0,WHITE,WHITE,"    ");
 	j3=0;
 	j2+=1;	
 	}
-	///////////////////////////////////////////Á¡¼ö ÀúÀå 
+	///////////////////////////////////////////ì ìˆ˜ ì €ì¥ 
 if(set_type[3]==1){	
 fin.open("Max_num_score.txt");
 file_int=0;
@@ -2394,7 +2394,7 @@ if(score>file_int){
 	fout.open("Max_num_score.txt");
 	fout<<score;
 	fout.close();
-	Gotoxy(MAPX,MAPY-1);//Á¡¼ö µğ½ºÇÃ·¡ÀÌ 
+	Gotoxy(MAPX,MAPY-1);//ì ìˆ˜ ë””ìŠ¤í”Œë˜ì´ 
 	textcolor(LIGHTRED,WHITE);
 	cout<<"SCORE | "<<score;
 }
@@ -2410,16 +2410,16 @@ else if(set_type[3]==0){
 		else if(score<=file_int)
 		Write(7,24,DARKGRAY,WHITE,"  Press 'q' to go to manu!"); 
 		
-		j2=0;//±â·Ï ¿Ï·á »ó¼ö 
+		j2=0;//ê¸°ë¡ ì™„ë£Œ ìƒìˆ˜ 
     	if(kbhit()){
 			but=_getch();
 			if(but=='q'){
 				if(score>file_int){
 			j=0;
 			while(j<=15){	
-			Write(MAPX-2,29-j,BROWN,WHITE,"¡á");
+			Write(MAPX-2,29-j,BROWN,WHITE,"â– ");
 			Write(MAPX,29-j,WHITE,BROWN,"                          ");
-			Write(MAPX+25+1,29-j,BROWN,WHITE,"¡á");
+			Write(MAPX+25+1,29-j,BROWN,WHITE,"â– ");
 			if(j>=1)
 				Write(MAPX-2,30-j,WHITE,DARKGRAY,"                              ");
 			if(j>=2)
@@ -2455,7 +2455,7 @@ else if(set_type[3]==0){
 				i+=1;
 			}
 			i1=0;
-			while(j2==0){//±â·Ï ¿Ï·á »ó¼ö 
+			while(j2==0){//ê¸°ë¡ ì™„ë£Œ ìƒìˆ˜ 
 				if(kbhit()){  
 					but=_getch();
 					if(but!=0x08&&but!=0x0D&&but!=' '&&i1<=25){
@@ -2465,7 +2465,7 @@ else if(set_type[3]==0){
 						name[i1]=but;	
 						i1+=1;
 					}
-					else if(but==0x08){    //backspace °¨Áö 
+					else if(but==0x08){    //backspace ê°ì§€ 
 						if(i1<=25)
 						Write(MAPX+i1,19,DARKGRAY,WHITE," ");
 						if(i1>0)
@@ -2479,25 +2479,25 @@ else if(set_type[3]==0){
 						i1+=1;
 					}
 					else if(but==0x0D){
-						fout.open("Num_name.txt");//¼ıÀÚ Á¾·ù 			
+						fout.open("Num_name.txt");//ìˆ«ì ì¢…ë¥˜ 			
 						fout<<name;
 						fout.close();
 						Map();
 						Background();
 						Num_display();
 						Sleep(400);
-						j2=1;//±â·Ï ¿Ï·á »ó¼ö 
+						j2=1;//ê¸°ë¡ ì™„ë£Œ ìƒìˆ˜ 
 				}
 			}
-			if(i1<=25&&i>=30&&i<50){//´ÜÀ§½Ã°£»ó¼ö i 
+			if(i1<=25&&i>=30&&i<50){//ë‹¨ìœ„ì‹œê°„ìƒìˆ˜ i 
 			Write(MAPX+i1,19,DARKGRAY,WHITE,"|");
 			}
-			else if(i1<=25&&i>=60){//´ÜÀ§½Ã°£»ó¼ö i 
+			else if(i1<=25&&i>=60){//ë‹¨ìœ„ì‹œê°„ìƒìˆ˜ i 
 			Write(MAPX+i1,19,DARKGRAY,WHITE," ");
-			i=0;	//´ÜÀ§½Ã°£»ó¼ö i 
+			i=0;	//ë‹¨ìœ„ì‹œê°„ìƒìˆ˜ i 
 			}
 			Sleep(5);
-			i+=1;//´ÜÀ§½Ã°£»ó¼ö i 
+			i+=1;//ë‹¨ìœ„ì‹œê°„ìƒìˆ˜ i 
 			
 		}
 	}			
@@ -2537,17 +2537,17 @@ else if(set_type[3]==0){
 					if(MAPX+19+j*3<=39)					
 					Write(MAPX+19+j*3,3,CYAN,WHITE,"  "); 
 					if(MAPX+7+j*3<41)
-					Write(MAPX+7+j*3,3,CYAN,WHITE,"£Ô"); 
+					Write(MAPX+7+j*3,3,CYAN,WHITE,"ï¼´"); 
 					if(MAPX+9+j*3<41)
-					Write(MAPX+9+j*3,3,LIGHTRED,WHITE,"£È"); 
+					Write(MAPX+9+j*3,3,LIGHTRED,WHITE,"ï¼¨"); 
 					if(MAPX+11+j*3<41)
-					Write(MAPX+11+j*3,3,DARKGRAY,WHITE,"£Ò"); 
+					Write(MAPX+11+j*3,3,DARKGRAY,WHITE,"ï¼²"); 
 					if(MAPX+13+j*3<41)
-					Write(MAPX+13+j*3,3,DARKGRAY,WHITE,"£Å"); 
+					Write(MAPX+13+j*3,3,DARKGRAY,WHITE,"ï¼¥"); 
 					if(MAPX+15+j*3<41)
-					Write(MAPX+15+j*3,3,DARKGRAY,WHITE,"£Å"); 
+					Write(MAPX+15+j*3,3,DARKGRAY,WHITE,"ï¼¥"); 
 					if(MAPX+17+j*3<41)
-					Write(MAPX+17+j*3,3,DARKGRAY,WHITE,"£Ó"); 					
+					Write(MAPX+17+j*3,3,DARKGRAY,WHITE,"ï¼³"); 					
 					Sleep(5);
 					j-=1;
 				}
